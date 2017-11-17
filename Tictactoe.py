@@ -141,7 +141,11 @@ def check_diag(board):
 
 def check_win_all(board):
 
-    if check_hoz(board) is "true" or check_vert(board) is "true" or check_diag(board) is "true":
+    winState_hoz = check_hoz(board)
+    winState_vert = check_vert(board)
+    winState_diag = check_diag(board)
+
+    if winState_hoz == "true" or winState_vert == "true" or winState_diag == "true":
         return "true"
     else:
         return "false"
@@ -152,7 +156,7 @@ def Player_1(board,boardsize):
     board = setElem(elem, chosenCell, board, boardsize)
     drawBoard(board,boardsize)
     win = check_win_all(board)
-    if win is "false":
+    if win == "false":
 
         Player_2(board,boardsize)
     else:
@@ -164,7 +168,7 @@ def Player_2(board, boardsize):
     board = setElem(elem, chosenCell, board, boardsize)
     drawBoard(board, boardsize)
     win = check_win_all(board)
-    if win is "false":
+    if win == "false":
 
         Player_1(board, boardsize)
     else:
