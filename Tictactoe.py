@@ -66,19 +66,19 @@ def check_hoz(board): # FUNCTION TO CHECK ALL HORIZONTAL WIN STATES
 
     # CHECKING THE TOP ROW
     i = 0
-    for j in range (2):
+    for j in range(2):
         if board[i][j] != board[i][j+1]:
             win = "false"
 
     # CHECKING THE MIDDLE ROW
     i = 1
-    for j in range (2):
+    for j in range(2):
         if board[i][j] != board[i][j+1]:
             win = "false"
 
     # CHECKING THE BOTTOM ROW
     i = 2
-    for j in range (2):
+    for j in range(2):
         if board[i][j] != board[i][j+1]:
             win = "false"
 
@@ -94,7 +94,7 @@ def check_vert(board): # FUNCTION TO CHECK ALL VERTICAL WIN STATES
 
     #LEFT VERTICAL
     j = 0
-    for i in range (2):
+    for i in range(2):
         if board[i][j] != board[i+1][j]:
             win = 'false'
 
@@ -123,7 +123,7 @@ def check_diag(board):
     # CHECK FROM TOP LEFT TO BOTTOM RIGHT
     j = 0
     for i in range(2):
-        if board [i][j] != board[i+1][j+1]:
+        if board[i][j] != board[i+1][j+1]:
             win = "false"
         j = j+1
 
@@ -141,9 +141,7 @@ def check_diag(board):
 
 def check_win_all(board):
 
-    if check_hoz(board) is "true"\
-            or check_vert(board) is "true"\
-            or check_diag(board) is "true":
+    if check_hoz(board) is "true" or check_vert(board) is "true" or check_diag(board) is "true":
         return "true"
     else:
         return "false"
@@ -156,7 +154,7 @@ def Player_1(board,boardsize):
     win = check_win_all(board)
     if win is "false":
 
-        Player_2 (board,boardsize)
+        Player_2(board,boardsize)
     else:
         print('Congratulations Player 1! You win!')
 
@@ -182,7 +180,7 @@ def inputChosenCell_1():
     else:
         return chosenCell
 
-def inputchosencell_2():
+def inputChosenCell_2():
     chosenCell = int(input("Player2!! pick a position"))
     if chosenCell > 9:
         #checking if player 2 enters a number grater than 9
