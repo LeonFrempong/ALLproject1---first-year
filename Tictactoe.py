@@ -19,11 +19,22 @@ def main():
 
 
 def defineBoard(boardsize):
+    """
+
+    :param boardsize: integer
+    :return: list
+    """
     board = [[""] * boardsize for i in range(boardsize)]
     return board
 
 
-def createBoardLabels(board, boardsize):  #
+def createBoardLabels(board, boardsize):
+    """
+
+    :param board: list
+    :param boardsize: integer
+    :return: list
+    """
     counter = 0
     for i in range(boardsize):
         for j in range(boardsize):
@@ -33,20 +44,38 @@ def createBoardLabels(board, boardsize):  #
 
 
 def print_divider(boardsize):
+    """
+    :param boardsize: integer
+    """
 
     print ('|'.join(['____' for x in range(boardsize)]))
 
 
 def print_blank(boardsize):
+    """
+    :param boardsize: list
+
+    """
     print ('|'.join(['    ' for x in range(boardsize)]))
 
 def print_labels(counter, board, boardsize):
+    """
+
+    :param counter: integer
+    :param board: list
+    :param boardsize: integer
+    """
     row = ' | '.join(['%2s' % board[counter][x] for x in range(boardsize)])
     row = ' ' + row
     print(row)
 
 
 def drawBoard(board, boardsize):
+    """
+
+    :param board: list
+    :param boardsize: integer
+    """
     for i in range(boardsize):
         print_blank(boardsize)
         print_labels(i, board, boardsize)
@@ -57,6 +86,11 @@ def drawBoard(board, boardsize):
 
 
 def check_win_left_vertical(board):
+    """
+
+    :param board: list
+    :return: string
+    """
     """
     the first function below (check_win_left_vertical)
     shows that the function needs to check the left side of the
@@ -74,6 +108,11 @@ def check_win_left_vertical(board):
 
 def check_win_mid_vertical(board):
     """
+
+    :param board: list
+    :return: string
+    """
+    """
     function checks the middle column for matches
     """
     win = "true"
@@ -89,11 +128,15 @@ def check_win_mid_vertical(board):
 
 def check_win_right_vertical(board):
     """
+
+    :param board: list
+    :return: string
+    """
+    """
     function checks right most column for matches
-    return data type: string
     """
     win = "true"
-    j = 2  # value has changd to 2 to check if the third column is win true
+    j = 2  # value has changed to 2 to check if the third column is win true
     # or false
     for i in range(2):
         if board[i][j] != board[i + 1][j]:
@@ -106,8 +149,12 @@ def check_win_right_vertical(board):
 
 def check_win_top_hoz(board):
     """
+
+    :param board: list
+    :return: string
+    """
+    """
     function checks top row for matches
-    return data type: string
     """
     win = "true"
     i = 0  # this shows that the variable has changed to j, to check win
@@ -121,8 +168,12 @@ def check_win_top_hoz(board):
 
 def check_win_mid_hoz(board):
     """
+
+    :param board: list
+    :return: string
+    """
+    """
     function checks middle row for matches
-    return data type: string
 
     """
     win = "true"
@@ -139,8 +190,12 @@ def check_win_mid_hoz(board):
 
 def check_win_bottom_hoz(board):
     """
+
+    :param board: list
+    :return: string
+    """
+    """
     function checks bottom row for matches
-    return data type: string
     """
     win = "true"
     i = 2  # this shows that the variable has changed to j, to check win
@@ -155,8 +210,12 @@ def check_win_bottom_hoz(board):
 
 def check_win_first_diag(board):
     """
+
+    :param board: list
+    :return: string
+    """
+    """
     function checks from top left to bottom right
-    return data type: string
     """
     win = "true"
     j = 0
@@ -169,6 +228,11 @@ def check_win_first_diag(board):
 
 
 def check_win_second_diag(board):
+    """
+
+    :param board: list
+    :return: string
+    """
     """
     function checks from top right to bottom left
     return data type: string
@@ -183,6 +247,11 @@ def check_win_second_diag(board):
 
 
 def check_win_all(board):
+    """
+
+    :param board: list
+    :return: string
+    """
     """
     function calls all win checking functions
     return data type: string
@@ -202,9 +271,16 @@ def check_win_all(board):
         return "false"
 
 def Player_1(board,boardsize, statusList):
+    """
+
+    :param board: list
+    :param boardsize: integer
+    :param statusList: list
+
+    """
     elem = 'X'
     chosenCell, statusList = inputChosenCell_1(elem, statusList)
-    board = setElem(elem, chosenCell, board, boardsize)
+    board = setElem(elem, chosenCell, board)
     drawBoard(board,boardsize)
     win = check_win_all(board)
     if win == "false":
@@ -220,9 +296,16 @@ def Player_1(board,boardsize, statusList):
         print('Congratulations Player 1! You win!')
 
 def Player_2(board, boardsize, statusList):
+    """
+
+    :param board: list
+    :param boardsize: integer
+    :param statusList: list
+
+    """
     elem = 'O'
     chosenCell, statusList = inputChosenCell_2(elem, statusList)
-    board = setElem(elem, chosenCell, board, boardsize)
+    board = setElem(elem, chosenCell, board)
     drawBoard(board, boardsize)
     win = check_win_all(board)
     if win == "false":
@@ -238,6 +321,12 @@ def Player_2(board, boardsize, statusList):
         print('Congratulations Player 2! You win!')
 
 def inputChosenCell_1(elem, statusList):
+    """
+
+    :param elem: string
+    :param statusList: list
+    :return: chosenCell: integer, statusList: list
+    """
     """prompts the player for input and returns their chosen move."""
     while True:
         try:
@@ -262,14 +351,19 @@ def inputChosenCell_1(elem, statusList):
     return chosenCell, statusList
 
 def inputChosenCell_2(elem, statusList):
-    """prompts the player for input and returns their chosen move."""
+    """prompts the player for input and returns their chosen move.
+    :param elem: string
+    :param statusList: list
+    :return: ChosenCell: integer, statusList: list
+    """
     while True:
         try:
             chosenCell = int(input("Player2!! pick a position"))
             if chosenCell > 9 or chosenCell < 1:
                 #checking if player 2 enters a number grater than 9
                 print("position invalid. Please pick another position that is displayed on the board ")
-            elif chosenCell not in statusList:  #checking if the chosencell is not in the statusList
+            elif chosenCell not in statusList:  # checking if the chosencell is not in the statusList
+                                                # if chosenCell is not in the stausList, the cell has already been taken
                 print("Your cell has been taken!")  #prints message then loops again
             else:
                 for i in range(len(statusList)):    # looping through statusList
@@ -286,7 +380,14 @@ def inputChosenCell_2(elem, statusList):
 
 
 
-def setElem(elem, chosenCell, board, boardsize):
+def setElem(elem, chosenCell, board):
+    """
+
+    :param elem: string
+    :param chosenCell: Integer
+    :param board: List
+    :return: board: List
+    """
     for j in range(3):
         for i in range(3):
             if chosenCell == board[i][j]:
